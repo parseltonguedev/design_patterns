@@ -1,0 +1,30 @@
+@startuml
+
+class Client
+
+abstract Aggregate {
+    + CreateIterator()
+}
+
+
+abstract MusicIterator {
+    + First()
+    + Next()
+    + IsDone()
+    + CurrentItem()
+}
+
+class MusicPlaylist implements Aggregate {
+    + CreateIterator()
+}
+
+class MusicSelector implements MusicIterator {
+
+}
+
+Client -left-> Aggregate
+Client -right-> MusicIterator
+MusicSelector -left-> MusicPlaylist
+MusicPlaylist .right.> MusicSelector
+
+@enduml

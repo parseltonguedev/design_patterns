@@ -1,0 +1,30 @@
+@startuml
+
+abstract Worker {
+    + dailyRoutine()
+    + getUp()
+    + cookBreakfast()
+    + goToWork()
+    + work()
+    + goHome()
+    + sleep()
+}
+
+class Manager extends Worker {
+    + dailyRoutine()
+}
+
+class Policeman extends Worker {
+    + dailyRoutine()
+}
+
+note right of Worker::dailyRoutine
+    ...
+    getup()
+    ...
+    sleep()
+    ...
+end note
+
+
+@enduml

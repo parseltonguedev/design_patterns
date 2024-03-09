@@ -1,0 +1,32 @@
+@startuml
+
+class Bookmark {
+ - state
+ + getState()
+ + setState()
+}
+
+class Caretaker {}
+
+class Book {
+ - state
+ + setMemento(in Memento)
+ + createMemento()
+}
+
+
+
+Bookmark <-right-o Caretaker :memento
+Book .right.> Bookmark
+
+note left of Book::createMemento
+    return new Bookmark(state)
+end note
+
+note left of Book::setMemento
+    state = m.getState()
+end note
+
+
+
+@enduml

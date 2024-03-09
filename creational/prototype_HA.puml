@@ -1,0 +1,32 @@
+@startuml
+
+abstract class PrototypeCapableDocument {
+  - vendorName: String
+  - content: String
+  + getVendorName(): String
+  + setVendorName(vendorName: String): void
+  + getContent(): String
+  + setContent(content: String): void
+  + {abstract} cloneDocument(): PrototypeCapableDocument
+}
+
+class TAndC {
+  + cloneDocument(): PrototypeCapableDocument
+  + toString(): String
+}
+
+class NDAgreement {
+  + cloneDocument(): PrototypeCapableDocument
+  + toString(): String
+}
+
+class DocumentPrototypeManager {
+  - prototypes: PrototypeCapableDocument
+  + {static} getClonedDocument(type: String): PrototypeCapableDocument
+}
+
+TAndC -up-|> PrototypeCapableDocument
+NDAgreement -up-|> PrototypeCapableDocument
+DocumentPrototypeManager --> PrototypeCapableDocument
+
+@enduml

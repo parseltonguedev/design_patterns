@@ -1,0 +1,48 @@
+@startuml
+
+class Client {}
+
+abstract Visitor {
+    + visitConcreteElementA(in ConcreteElementA)
+    + visitConcreteElementB(in ConcreteElementB)
+}
+
+class ConcreteVisitor1 extends Visitor {
+    + visitConcreteElementA(in ConcreteElementA)
+    + visitConcreteElementB(in ConcreteElementB)
+}
+
+class ConcreteVisitor2 extends Visitor {
+    + visitConcreteElementA(in ConcreteElementA)
+    + visitConcreteElementB(in ConcreteElementB)
+}
+
+class ShoppingMall {}
+
+abstract Element {
+    + accept(in visitor: Visitor)
+}
+
+class BookStore extends Element {
+    + accept(in visitor : Visitor)
+    + checkBook()
+}
+
+class ClothingStore extends Element {
+    + accept(in visitor : Visitor)
+    + wearClothes()
+}
+
+Client -right->Visitor
+Client -down-> ShoppingMall
+ShoppingMall -right-> Element
+
+note left of BookStore::accept
+    visitor.VisitConcreteElementA(this)
+end note
+
+note right of ClothingStore::accept
+    visitor.VisitConcreteElementB(this)
+end note
+
+@enduml

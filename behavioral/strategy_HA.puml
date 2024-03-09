@@ -1,0 +1,29 @@
+@startuml
+
+class RoadToWork {
+    + contextInterface()
+}
+
+abstract Strategy {
+    + algorithmInterface()
+}
+
+class Walk extends Strategy {
+    + algorithmInterface()
+}
+
+class PersonalCar extends Strategy {
+    + algorithmInterface()
+}
+
+class Taxi extends Strategy {
+    + algorithmInterface()
+}
+
+class Bus extends Strategy {
+    + algorithmInterface()
+}
+
+RoadToWork o-right-> Strategy: strategy
+
+@enduml

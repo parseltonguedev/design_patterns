@@ -1,0 +1,40 @@
+@startuml
+
+abstract Subject {
+    + attach(in Observer)
+    + detach(in Observer)
+    + notify()
+}
+
+abstract Observer {
+    + update()
+}
+
+class StockMarket extends Subject {
+    - subjectState
+    + getState()
+}
+
+class Investors extends Observer {
+    - observerState
+    + update()
+}
+
+Subject -right-> Observer: observer
+Investors -left-> StockMarket: subject
+
+note right of Subject::detach
+    foreach o in observers
+      o.update()
+end note
+
+note right of StockMarket::getState
+    return subjectState
+end note
+
+note left of Investors::update
+    observerState = subject.getState()
+end note
+
+
+@enduml

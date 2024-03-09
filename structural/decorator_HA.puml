@@ -1,0 +1,44 @@
+@startuml
+
+abstract AbstractSandwich {
+    +make(): void
+}
+
+class Sandwich {
+    +make(): void
+}
+
+class SandwichDecorator {
+    -AbstractSandwich sandwich
+    +make(): void
+}
+
+class LettuceDecorator {
+    -AbstractSandwich sandwich
+    +make(): void
+}
+
+class TomatoDecorator {
+    -AbstractSandwich sandwich
+    +make(): void
+}
+
+class PickleDecorator {
+    -AbstractSandwich sandwich
+    +make(): void
+}
+
+class SauceDecorator {
+    -AbstractSandwich sandwich
+    +make(): void
+}
+
+Sandwich --|> AbstractSandwich
+AbstractSandwich <|-- SandwichDecorator
+AbstractSandwich <-o SandwichDecorator
+SandwichDecorator <|-- LettuceDecorator
+SandwichDecorator <|-- TomatoDecorator
+SandwichDecorator <|-- PickleDecorator
+SandwichDecorator <|-- SauceDecorator
+
+@enduml

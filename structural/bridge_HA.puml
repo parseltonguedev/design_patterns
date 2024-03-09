@@ -1,0 +1,43 @@
+@startuml
+
+'class for the client
+class Client {
+    +submitProjectRequirements(requirements: String): void
+}
+
+'abstract class for the professionals'
+abstract class Professional {
+    +performTask(task: String): String
+}
+
+'class for design professional'
+class Designer extends Professional {
+    +performTask(task: String): String
+}
+
+'class for development professional'
+class Developer extends Professional {
+    +performTask(task: String): String
+}
+
+'class for content professional'
+class ContentCreator extends Professional {
+    +performTask(task: String): String
+}
+
+'class for the freelancer'
+class Manager {
+    -client: Client
+    -professionals: List<Professional>
+    +assignClient(client: Client): void
+    +addProfessional(professional: Professional): void
+    +removeProfessional(professional: Professional): void
+    +manageProject(requirements: String): void
+}
+
+'associations'
+Client o-> Manager
+Manager o-> Professional
+
+
+@enduml

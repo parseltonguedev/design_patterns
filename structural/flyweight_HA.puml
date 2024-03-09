@@ -1,0 +1,27 @@
+@startuml
+
+abstract class Uniform {
+  + Uniform(color: String, design: String, material: String)
+  - String color
+  - String design
+  - String material
+}
+
+class Student {
+  + Student(uniform: Uniform, size: String, fit: String)
+  - Uniform uniform
+  - String size
+  - String fit
+}
+
+class UniformFactory {
+  + getUniform(color: String, design: String, material: String): Uniform
+  - Map<String, Uniform> uniforms
+}
+
+Student --> "uniform" Uniform: wears
+UniformFactory --> "uniforms" Uniform: creates
+UniformFactory <-- Student : gets
+@enduml
+
+'School Uniforms: All students of a school wear the same dress (intrinsic data), but the size and fit of the uniform for each student (extrinsic data) can be different.

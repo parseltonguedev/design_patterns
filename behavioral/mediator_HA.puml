@@ -1,0 +1,18 @@
+@startuml
+
+abstract Mediator {}
+
+abstract Colleague {}
+
+class TourGuide extends Mediator {}
+
+class Tourist1 extends Colleague {}
+
+class Tourist2 extends Colleague {}
+
+TourGuide -> Tourist1
+TourGuide -> Tourist2
+Colleague -left> Mediator : mediator
+
+
+@enduml

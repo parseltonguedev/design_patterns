@@ -1,0 +1,109 @@
+@startuml
+
+class CasualDirector {
+  -Builder: builder
+  +setBuilder(Builder: builder): void
+  +build(): void
+}
+
+class CheapDirector {
+  -Builder: builder
+  +setBuilder(Builder: builder): void
+  +build(): void
+}
+
+class ServerDirector {
+  -Builder: builder
+  +setBuilder(Builder: builder): void
+  +build(): void
+}
+
+abstract class Builder {
+  {abstract} +buildCPU(): void
+  {abstract} +buildRAM(): void
+  {abstract} +buildStorage(): void
+  {abstract} +buildGPU(): void
+}
+
+class ConcretePCBuilder {
+  -pc: PC
+  +buildCPU(): void
+  +buildRAM(): void
+  +buildStorage(): void
+  +buildGPU(): void
+  +getResult(): PC
+}
+
+class ConcreteRaspberryPiBuilder {
+  -raspberry_pi: RaspberryPi
+  +buildCPU(): void
+  +buildRAM(): void
+  +buildStorage(): void
+  +buildGPU(): void
+  +getResult(): RaspberryPi
+}
+
+class ConcreteSmartWatchBuilder {
+  -smart_watch: SmartWatch
+  +buildCPU(): void
+  +buildRAM(): void
+  +buildStorage(): void
+  +buildGPU(): void
+  +getResult(): SmartWatch
+}
+
+class ConcreteSmartphoneBuilder {
+  -smart_phone: Smartphone
+  +buildCPU(): void
+  +buildRAM(): void
+  +buildStorage(): void
+  +buildGPU(): void
+  +getResult(): Smartphone
+}
+
+class Smartphone {
+  -cpu: string
+  -ram: string
+  -storage: string
+  -gpu: string
+  +showDetails(): string
+}
+
+class PC {
+  -cpu: string
+  -ram: string
+  -storage: string
+  -gpu: string
+  +showDetails(): string
+}
+
+class RaspberryPi {
+  -cpu: string
+  -ram: string
+  -storage: string
+  -gpu: string
+  +showDetails(): string
+}
+
+
+class SmartWatch {
+  -cpu: string
+  -ram: string
+  -storage: string
+  -gpu: string
+  +showDetails(): string
+}
+
+CasualDirector o-- Builder : Aggregates
+CheapDirector o-- Builder : Aggregates
+ServerDirector o-- Builder : Aggregates
+ConcretePCBuilder --|> Builder : Inherits
+ConcreteRaspberryPiBuilder --|> Builder : Inherits
+ConcreteSmartWatchBuilder --|> Builder : Inherits
+ConcreteSmartphoneBuilder --|> Builder : Inherits
+ConcretePCBuilder --> PC : Creates
+ConcreteRaspberryPiBuilder --> RaspberryPi : Creates
+ConcreteSmartWatchBuilder --> SmartWatch : Creates
+ConcreteSmartphoneBuilder --> Smartphone : Creates
+
+@enduml

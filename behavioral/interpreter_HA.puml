@@ -1,0 +1,25 @@
+@startuml
+
+class Client {}
+
+class Music {}
+
+abstract AbstractExpression {
+    + interpret(Context)
+}
+
+class MusicNotes extends AbstractExpression {
+    + data
+    + interpret(Context)
+}
+
+class InterpretedNotes extends AbstractExpression {
+    + interpret(Context)
+}
+
+AbstractExpression <--o InterpretedNotes
+
+Client --> Music
+Client -right-> AbstractExpression
+
+@enduml

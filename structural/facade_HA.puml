@@ -1,0 +1,35 @@
+@startuml
+
+class ConciergeFacade {
+    + coordinateHousekeepingRequest(): void
+    + coordinateRoomServiceRequest(): void
+    + coordinateTourBookingRequest(): void
+    + coordinateTransportationRequest(): void
+}
+
+class Housekeeping {
+    + cleanRoom(): void
+    + provideToiletries(): void
+}
+
+class RoomService {
+    + orderFood(): void
+    + deliverFood(): void
+}
+
+class TourBooking {
+    + bookTour(): void
+    + arrangeGuide(): void
+}
+
+class Transportation {
+    + arrangeTransport(): void
+    + providePickupService(): void
+}
+
+ConciergeFacade --> Housekeeping
+ConciergeFacade --> RoomService
+ConciergeFacade --> TourBooking
+ConciergeFacade --> Transportation
+
+@enduml

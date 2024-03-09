@@ -1,0 +1,37 @@
+@startuml
+
+class ATM {
+    + request ()
+}
+
+abstract State {
+    + handle()
+}
+
+class IdleState extends State {
+    + handle()
+}
+
+class CardInsertedState extends State {
+    + handle()
+}
+
+class PINEnteredState extends State {
+    + handle()
+}
+
+class TransactionSelectedState extends State {
+    + handle()
+}
+
+class CashDispenseState extends State {
+    + handle()
+}
+
+ATM o-right-> State : state
+
+note left of ATM::request
+    state.handle()
+end note
+
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+'class CoffeeBar {
+'  +orderCoffee(type: String): Coffee
+'}
+
+abstract Coffee {
+  {abstract} -prepare(): String
+  +getCoffee(): String
+}
+
+class Espresso {
+  -prepare(): String
+}
+
+class Cappuccino {
+  -prepare(): String
+}
+
+class Latte {
+  -prepare(): String
+}
+
+Espresso --|> Coffee
+Latte --|> Coffee
+Cappuccino --|> Coffee
+
+'CoffeeBar --> Coffee: <<creates>>
+'CoffeeBar ..> Espresso
+'CoffeeBar ..> Cappuccino
+'CoffeeBar ..> Latte
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+class EnglishSpeaker {
+    + englishSpeach(): void
+}
+
+class ChineseSpeaker {
+    + chineseSpeech(): void
+}
+
+abstract ChineseToEnglishInterpreter {
+    + {abstract} translate(): void
+}
+
+
+EnglishSpeaker <|-- ChineseToEnglishInterpreter
+ChineseSpeaker <-* ChineseToEnglishInterpreter
+
+@enduml

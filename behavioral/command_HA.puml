@@ -1,0 +1,24 @@
+@startuml
+abstract Command {
+    execute()
+    undo()
+}
+class RestarauntGuest{
+    setCommand()
+}
+class Client
+class Chief{
+    action()
+}
+class Waiter{
+    - state
+    execute()
+    undo()
+}
+
+Command <|-down- Waiter
+Client -right-> Chief
+Client ..> Waiter
+RestarauntGuest o-left-> Command
+Chief <-left- Waiter
+@enduml

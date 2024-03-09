@@ -1,0 +1,41 @@
+@startuml
+
+interface Handler {
+    + setNextHandler(Handler): void
+    + handleRequest(Order): void
+}
+
+class Customer {
+    - Handler handler
+    + placeOrder(Order)
+}
+
+class Waiter {
+    - Handler next
+    + setNextHandler(Handler): void
+    + handleRequest(Order): void
+    - passToKitchen(Order): void
+}
+
+class Chef {
+    - Handler next
+    + setNextHandler(Handler): void
+    + handleRequest(Order): void
+    - prepareOrder(Order): void
+}
+
+class Order {
+    - MenuItem item
+    - String status
+}
+
+Customer --> Handler : uses
+Waiter .up.> Handler : implements
+Chef .up.> Handler : implements
+Handler <-- Customer : forwards
+Waiter --> Chef : forwards
+Order <-- Customer : creates
+Order --> Waiter : goes to -->
+Order --> Chef : goes to -->
+
+@enduml

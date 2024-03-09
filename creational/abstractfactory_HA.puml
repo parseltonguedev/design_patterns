@@ -1,0 +1,81 @@
+@startuml
+
+abstract class MovieFactory {
+  {abstract} +createCast(): Cast
+  {abstract} +createDirector(): Director
+}
+
+class ActionMovie {
+  +createCast(): Cast
+  +createDirector(): Director
+}
+
+class DramaMovie {
+  +createCast(): Cast
+  +createDirector(): Director
+}
+
+class ComedyMovie {
+  +createCast(): Cast
+  +createDirector(): Director
+}
+
+abstract class Cast {
+  {abstract} +playRole()
+}
+
+abstract class Director {
+  {abstract} +createPlot()
+}
+
+class ActionCast {
+  +playRole()
+}
+
+class ActionDirector {
+  +createPlot()
+}
+
+class DramaCast {
+  +playRole()
+}
+
+class DramaDirector {
+  +createPlot()
+}
+
+class ComedyCast {
+  +playRole()
+}
+
+class ComedyDirector {
+  +createPlot()
+}
+
+class MovieClient {
+  -cast
+  -director
+  +MovieClient(factory: MovieFactory)
+  +createMovie()
+}
+
+MovieFactory <|-- ActionMovie
+MovieFactory <|-- DramaMovie
+MovieFactory <|-- ComedyMovie
+Cast <|-- ActionCast
+Cast <|-- DramaCast
+Cast <|-- ComedyCast
+Director <|-- ActionDirector
+Director <|-- DramaDirector
+Director <|-- ComedyDirector
+
+MovieClient --> MovieFactory
+
+ActionMovie -down-> ActionCast
+ActionMovie -down-> ActionDirector
+DramaMovie -down-> DramaCast
+DramaMovie -down-> DramaDirector
+ComedyMovie -down-> ComedyCast
+ComedyMovie -down-> ComedyDirector
+
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+
+class Curriculum extends Item {
+    -String name
+    -List<Item> courses
+    +addCourse(course: Course): void
+    +removeCourse(course: Course): void
+    +calculateTime(): int
+}
+
+class Course extends Item {
+    -String name
+    -List<Item> modules
+    +addModule(module: Module): void
+    +removeModule(module: Module): void
+    +calculateTime(): int
+}
+
+class Module extends Item {
+    -String name
+    -List<Item> lessons
+    +addLesson(lesson: Lesson): void
+    +removeLesson(lesson: Lesson): void
+    +calculateTime(): int
+}
+
+class Lesson extends Item {
+    -String name
+    +calculateTime(): int
+}
+
+abstract class Item {
+    +calculateTime(): int
+}
+
+Curriculum "1" --> "*" Course
+Course "*" --> "*" Module
+Module "*" --> "*" Lesson
+
+@enduml

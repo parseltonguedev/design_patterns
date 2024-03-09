@@ -1,0 +1,12 @@
+@startuml AirConditionController
+
+class AirConditionController {
+  - {static} instance: AirConditionController
+  - AirConditionController()
+  + {static} getInstance(): AirConditionController
+  + setTemperature(temperature: int)
+  + turnOn()
+  + turnOff()
+}
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+
+class Locker {
+    +storeItem(item: String)
+    +retrieveItem(item: String)
+}
+
+class PersonalStorage {
+    +storeItem(item: String)
+    +retrieveItem(item: String)
+}
+
+class Student {
+    - Locker locker
+    +storeItem(item: String)
+    +retrieveItem(item: String)
+}
+
+Student --> Locker: uses
+Locker .right.> PersonalStorage: accesses
+
+@enduml

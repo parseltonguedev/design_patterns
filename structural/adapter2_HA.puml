@@ -1,0 +1,21 @@
+@startuml
+
+class Bicycle {
+    +attachTrailer(trailerHitch: TrailerHitch): void
+}
+
+class Trailer {
+    +loadCargo(cargo: Object): void
+}
+
+abstract TrailerHitch {
+    -trailer: Trailer
+    +attachTrailer(trailer: Trailer): void
+    +detachTrailer(): Trailer
+    +getTrailer(): Trailer
+}
+
+Bicycle o-- TrailerHitch
+TrailerHitch *-> Trailer
+
+@enduml
